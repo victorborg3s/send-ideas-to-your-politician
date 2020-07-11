@@ -1,0 +1,29 @@
+div.section-three {
+  display: flex;
+  background-color: #8dc757;
+  padding-top: 5rem 0;
+  width: 100%;
+}
+
+div.section-three div.title-box,
+div.section-three div.text-box {
+  float: left;
+}
+
+div.section-three div.title-box {
+  margin-bottom: -4px;
+  width: 35%;
+}
+
+div.section-three div.title-box img {
+  width: 100%;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+div.section-three div.text-box {
+  border: 0.125rem solid #fff;
+  height: auto;
+  margin: 6%;
+  width: 65%;
+}

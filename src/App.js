@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useRef } from 'react';
+
+import SectionPresentation from './SectionPresentation';
+import SectionTwo from './SectionTwo';
+import SectionThree from './SectionThree';
+import SectionForm from './SectionForm';
+import headerImage from './header.png';
 import './App.css';
 
 function App() {
+  const formRef = useRef(null);
+  const description = "Laércio Jr: Pré-candidato a Prefeito";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header>
+        <img src={headerImage} alt={description} />
       </header>
+      <SectionPresentation
+        onParticipateClick={() => {
+          window.scrollTo(0, formRef.current.offsetTop)
+        }}
+        description={description}
+      />
+      <SectionTwo />
+      <SectionThree description={description} />
+      <SectionForm ref={formRef} />
     </div>
   );
 }
