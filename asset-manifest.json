@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/victorborg3s/send-ideas-to-your-politician/static/css/main.76668649.chunk.css",
+    "main.js": "/victorborg3s/send-ideas-to-your-politician/static/js/main.369fb85c.chunk.js",
+    "main.js.map": "/victorborg3s/send-ideas-to-your-politician/static/js/main.369fb85c.chunk.js.map",
+    "runtime-main.js": "/victorborg3s/send-ideas-to-your-politician/static/js/runtime-main.7b8af206.js",
+    "runtime-main.js.map": "/victorborg3s/send-ideas-to-your-politician/static/js/runtime-main.7b8af206.js.map",
+    "static/js/2.49bc3a56.chunk.js": "/victorborg3s/send-ideas-to-your-politician/static/js/2.49bc3a56.chunk.js",
+    "static/js/2.49bc3a56.chunk.js.map": "/victorborg3s/send-ideas-to-your-politician/static/js/2.49bc3a56.chunk.js.map",
+    "index.html": "/victorborg3s/send-ideas-to-your-politician/index.html",
+    "precache-manifest.39e63a954aae3e2dc41948ae747412a7.js": "/victorborg3s/send-ideas-to-your-politician/precache-manifest.39e63a954aae3e2dc41948ae747412a7.js",
+    "service-worker.js": "/victorborg3s/send-ideas-to-your-politician/service-worker.js",
+    "static/css/main.76668649.chunk.css.map": "/victorborg3s/send-ideas-to-your-politician/static/css/main.76668649.chunk.css.map",
+    "static/js/2.49bc3a56.chunk.js.LICENSE.txt": "/victorborg3s/send-ideas-to-your-politician/static/js/2.49bc3a56.chunk.js.LICENSE.txt",
+    "static/media/header.png": "/victorborg3s/send-ideas-to-your-politician/static/media/header.9b9f0317.png",
+    "static/media/politician-photo.png": "/victorborg3s/send-ideas-to-your-politician/static/media/politician-photo.f3c0c795.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7b8af206.js",
+    "static/js/2.49bc3a56.chunk.js",
+    "static/css/main.76668649.chunk.css",
+    "static/js/main.369fb85c.chunk.js"
+  ]
+}
