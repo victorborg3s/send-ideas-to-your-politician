@@ -6,15 +6,15 @@ div.section-three {
   width: 100%;
 }
 
+div.section-three div.title-box {
+  margin-bottom: -10%;
+  width: 35%;
+  align-self: flex-end;
+}
+
 div.section-three div.title-box,
 div.section-three div.text-box {
   float: left;
-}
-
-div.section-three div.title-box {
-  margin-bottom: -4px;
-  width: 35%;
-  align-self: flex-end;
 }
 
 div.section-three div.quote-right {

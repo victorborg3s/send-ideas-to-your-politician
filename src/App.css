@@ -1,6 +1,7 @@
 div.app header {
   background-color: #0086c5;
   text-align: center;
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
 }
 
 div.app header img {
