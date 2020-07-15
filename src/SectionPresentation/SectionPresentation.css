@@ -17,7 +17,8 @@ div.presentation button.go-to-form {
 }
 
 div.presentation div.photo img {
-  margin-bottom: -50%;
+  margin-bottom: -30%;
+  margin-top: -5%;
   width: 100%;
 }
 
@@ -107,7 +108,7 @@ div.presentation div.right-box strong {
 @media (min-width: 1281px) {
   /* hi-res laptops and desktops */
   div.presentation div.right-box {
-    font-size: 900%;
+    font-size: 800%;
     letter-spacing: -0.675rem;
   }
   div.presentation div.right-box button {
