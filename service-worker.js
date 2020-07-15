@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/send-ideas-to-your-politician/precache-manifest.d8e7ecec66045fe4e287539dd36346bd.js"
+  "/send-ideas-to-your-politician/precache-manifest.9ba949f25df4c95f2922fcbf52b329fa.js"
 );
 
 self.addEventListener('message', (event) => {
