@@ -38,8 +38,8 @@ const SectionForm = React.forwardRef((props, ref) => {
       </Form.Group>
       <Form.Group>
         <Form.Label>GRAU DE INSTRUÇÃO*</Form.Label>
-        <Form.Control name="instrucao" as="select">
-          <option value="" disabled selected>Selecione...</option>
+        <Form.Control name="instrucao" as="select" value="">
+          <option value="" disabled>Selecione...</option>
           <option value="Ensino fundamental">Ensino fundamental</option>
           <option value="Ensino médio">Ensino médio</option>
           <option value="Ensino superior">Ensino superior</option>
@@ -48,8 +48,8 @@ const SectionForm = React.forwardRef((props, ref) => {
       </Form.Group>
       <Form.Group>
         <Form.Label>NA SUA OPNIÃO, QUAL O PRINCIPAL PROBLEMA DO MUNICÍPIO DE SENHOR DO BONFIM?*</Form.Label>
-        <Form.Control name="instrucao" as="select">
-          <option value="" disabled selected>Selecione...</option>
+        <Form.Control name="problema" as="select" value="">
+          <option value="" disabled>Selecione...</option>
           <option value="Asfalto/Calçamento/Pavimentação de ruas">Asfalto/Calçamento/Pavimentação de ruas</option>
           <option value="Desemprego">Desemprego</option>
           <option value="Esgoto/Saneamento">Esgoto/Saneamento</option>
@@ -65,8 +65,8 @@ const SectionForm = React.forwardRef((props, ref) => {
       </Form.Group>
       <Form.Group>
         <Form.Label>NA SUA OPNIÃO, DAS SEGUINTES ÁREAS, QUAL DEVE SER PRIORIZADA PELO PRÓXIMO PREFEITO?*</Form.Label>
-        <Form.Control name="area" as="select">
-          <option value="" disabled selected>Selecione...</option>
+        <Form.Control name="prioridade" as="select" value="">
+          <option value="" disabled>Selecione...</option>
           <option value="Saúde">Saúde</option>
           <option value="Educação">Educação</option>
           <option value="Saneamento">Saneamento</option>
@@ -78,8 +78,8 @@ const SectionForm = React.forwardRef((props, ref) => {
       </Form.Group>
       <Form.Group>
         <Form.Label>NO CAMPO ABAIXO ESCOLHA UM EIXO EM QUAL SUA IDEIA SE ENCAIXA.*</Form.Label>
-        <Form.Control name="area" as="select">
-          <option value="" disabled selected>Selecione...</option>
+        <Form.Control name="eixo" as="select" value="">
+          <option value="" disabled>Selecione...</option>
           <option value="Assistência Social">Assistência Social</option>
           <option value="Capacitação e Qualificação dos Servidores Públicos Municipais">ACapacitação e Qualificação dos Servidores Públicos Municipais</option>
           <option value="Ciência e Tecnologia">Ciência e Tecnologia</option>
