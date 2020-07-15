@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useRef, useImperativeHandle } from 'react';
 
 import './SectionForm.css';
 
-const SectionForm = React.forwardRef((props, ref) => (
-  <div ref={ref} className="section-form">
+const SectionForm = React.forwardRef((props, ref) => {
+  const firstFieldRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    scrollToForm: () => {
+      window.scrollTo(0, firstFieldRef.current.offsetTop)
+      firstFieldRef.current.focus();
+      console.log(firstFieldRef.current);
+    },
+  }), []);
+
+  return (
+    <div ref={ref} className="section-form">
     <h1>
       PARTICIPE E ENVIE SUA IDEIA
     </h1>
@@ -11,12 +22,10 @@ const SectionForm = React.forwardRef((props, ref) => (
       QUESTIONÁRIO
     </h2>
     <form>
-      <label htmlFor="nome">
-        NOME
-      </label>
-      <input id="nome" type="text" name="nome" />
+      <input ref={firstFieldRef} type="text" placeholder="NOME" />
     </form>
   </div>
-));
+  );
+});
 
 export default SectionForm;

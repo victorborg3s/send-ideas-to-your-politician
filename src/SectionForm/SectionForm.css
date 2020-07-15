@@ -1,9 +1,9 @@
 div.section-form {
-  display: block;
+  display: inline-block;
   background-color: #fff;
   font-weight: bold;
   font-style: oblique;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
   padding: 0 15% 5% 15%;
 }
 
@@ -32,13 +32,15 @@ div.section-form label {
   display: block;
 }
 
-div.section-form input {
+div.section-form input,
+div.section-form select {
+  color: #0086c5;
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 div.section-form label {
   color: #0086c5;
-  font-size: 70%;
 }
 
 @media (min-width: 360px) {
@@ -48,7 +50,7 @@ div.section-form label {
     letter-spacing: -0.1rem;
   }
   div.section-form h2 {
-    font-size: 90%;
+    font-size: 100%;
     letter-spacing: -0.075rem;
   }
 }

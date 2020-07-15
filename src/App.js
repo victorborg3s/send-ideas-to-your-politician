@@ -16,9 +16,7 @@ function App() {
         <img src={headerImage} alt={description} />
       </header>
       <SectionPresentation
-        onParticipateClick={() => {
-          window.scrollTo(0, formRef.current.offsetTop)
-        }}
+        onParticipateClick={() => formRef.current.scrollToForm()}
         description={description}
       />
       <SectionTwo />
