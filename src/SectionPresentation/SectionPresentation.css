@@ -108,7 +108,7 @@ div.presentation div.right-box strong {
 @media (min-width: 1281px) {
   /* hi-res laptops and desktops */
   div.presentation div.right-box {
-    font-size: 800%;
+    font-size: 700%;
     letter-spacing: -0.675rem;
   }
   div.presentation div.right-box button {
