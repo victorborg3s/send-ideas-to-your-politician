@@ -11,20 +11,16 @@ const SectionForm = React.forwardRef((props, ref) => {
   const [validated, setValidated] = useState(false);
   const firstFieldRef = useRef(null);
 
-  const saveData = (event) => {
+  const onFormSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
     if (form.checkValidity()) {
       fetch('http://localhost/', {
         method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
         mode: 'cors',
         cache: 'default',
-        body: JSON.stringify(formData),
+        body: new FormData(form),
       })
       .then((response) => {
         if (response.statusText === 'OK') {
@@ -38,8 +34,9 @@ const SectionForm = React.forwardRef((props, ref) => {
             `);
           }
           setShowModal(true);
+          return response.json();
         }
-        return response.json();
+        return response.text();
       })
       .then((json) => console.log(json));
     }
@@ -64,7 +61,7 @@ const SectionForm = React.forwardRef((props, ref) => {
     <h2>
       QUESTIONÁRIO
     </h2>
-    <Form noValidate validated={validated} onSubmit={saveData}>
+    <Form noValidate validated={validated} onSubmit={onFormSubmit}>
       <Form.Group>
         <Form.Label>NOME</Form.Label>
         <Form.Control
@@ -223,7 +220,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         >
           <option value="" disabled>Selecione...</option>
           <option value="Assistência Social">Assistência Social</option>
-          <option value="Capacitação e Qualificação dos Servidores Públicos Municipais">ACapacitação e Qualificação dos Servidores Públicos Municipais</option>
+          <option value="Capacitação e Qualificação dos Servidores Públicos Municipais">Capacitação e Qualificação dos Servidores Públicos Municipais</option>
           <option value="Ciência e Tecnologia">Ciência e Tecnologia</option>
           <option value="Comércio e Serviços">Comércio e Serviços</option>
           <option value="Comunicação">Comunicação</option>
@@ -264,7 +261,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
-        <Form.Label>NO CAMPO ABAIXO, DESCREVA SUA IDEIA PARA MELHORAR O FUTURO DE SENHOR DO BONFIM.</Form.Label>
+        <Form.Label>NO CAMPO ABAIXO, DESCREVA SUA IDEIA PARA MELHORAR O FUTURO DE SENHOR DO BONFIM*</Form.Label>
         <Form.Control
           name="sugestao"
           as="textarea"

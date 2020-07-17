@@ -25,15 +25,36 @@ class API {
     $db = new Connect();
     $stmt = $db->prepare('
       INSERT INTO idea (
-        suggestioner_name,
-        suggestion
+        nome,
+        whatsapp,
+        email,
+        bairro,
+        instrucao,
+        problema,
+        prioridade,
+        eixo,
+        sugestao
       ) VALUES(
         :nome,
+        :whatsapp,
+        :email,
+        :bairro,
+        :instrucao,
+        :problema,
+        :prioridade,
+        :eixo,
         :sugestao
       )
     ');
     $stmt->execute(array(
       ':nome' => $data['nome'],
+      ':whatsapp' => $data['whatsapp'],
+      ':email' => $data['email'],
+      ':bairro' => $data['bairro'],
+      ':instrucao' => $data['instrucao'],
+      ':problema' => $data['problema'],
+      ':prioridade' => $data['prioridade'],
+      ':eixo' => $data['eixo'],
       ':sugestao' => $data['sugestao'],
     ));
     return json_encode($data);
@@ -45,6 +66,6 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: http://localhost:3000');
 header('Access-Control-Allow-Headers: Accept, Content-Type');
 
-echo $API->insert(json_decode(file_get_contents('php://input'), true));
+echo $API->insert($_POST);
 
 ?>
