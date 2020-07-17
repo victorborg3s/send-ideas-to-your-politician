@@ -1,5 +1,6 @@
 <?php
-class Connect extends PDO
+
+class Connect extends \PDO
 {
   public function __construct()
   {
@@ -9,4 +10,5 @@ class Connect extends PDO
     $this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
   }
 }
+
 ?>

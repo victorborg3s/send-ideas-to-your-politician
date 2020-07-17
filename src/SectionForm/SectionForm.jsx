@@ -16,7 +16,7 @@ const SectionForm = React.forwardRef((props, ref) => {
     event.preventDefault();
     event.stopPropagation();
     if (form.checkValidity()) {
-      fetch('http://localhost/', {
+      fetch('http://laerciojunior.com/api', {
         method: 'post',
         mode: 'cors',
         cache: 'default',
@@ -34,7 +34,6 @@ const SectionForm = React.forwardRef((props, ref) => {
             `);
           }
           setShowModal(true);
-          return response.json();
         }
         return response.text();
       })

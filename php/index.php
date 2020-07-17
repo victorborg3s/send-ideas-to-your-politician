@@ -1,5 +1,9 @@
 <?php
-require_once __DIR__ . '/config.php';
+
+if ( extension_loaded('pdo_mysql') ) {
+  require_once __DIR__ . '/config.php';
+}
+
 class API {
   /*
   function select()
@@ -66,6 +70,11 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: http://localhost:3000, http://laerciojunior.com/');
 header('Access-Control-Allow-Headers: Accept, Content-Type');
 
-echo $API->insert($_POST);
+try {
+  echo $API->insert($_POST);
+} catch (Exception $e) {
+  http_response_code(500);
+  echo $e->getMessage();
+}
 
 ?>
