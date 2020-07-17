@@ -1,10 +1,13 @@
-import React, { useRef, useImperativeHandle } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import React, { useState, useRef, useImperativeHandle } from 'react';
+import { Form, Button, Modal } from 'react-bootstrap';
 import InputMask from "react-input-mask";
 
 import './SectionForm.css';
 
 const SectionForm = React.forwardRef((props, ref) => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [formData, setFormData] = useState({});
   const firstFieldRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
@@ -26,11 +29,25 @@ const SectionForm = React.forwardRef((props, ref) => {
     <Form>
       <Form.Group>
         <Form.Label>NOME</Form.Label>
-        <Form.Control ref={firstFieldRef} type="text" name="nome" />
+        <Form.Control
+          type="text"
+          name="nome"
+          ref={firstFieldRef}
+          onChange={(event) => {
+            setFormData({
+              ...formData,
+              nome: event.target.value
+            });
+          }}
+        />
       </Form.Group>
       <Form.Group>
         <Form.Label>WHATSAPP</Form.Label>
         <InputMask mask="(99) 99999-9999" name="whatsapp" className="form-control" />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>E-MAIL</Form.Label>
+        <Form.Control type="email" name="email" placeholder="email@exemplo.com" />
       </Form.Group>
       <Form.Group>
         <Form.Label>COMUNIDADE OU BAIRRO*</Form.Label>
@@ -120,12 +137,64 @@ const SectionForm = React.forwardRef((props, ref) => {
       </Form.Group>
       <Form.Group>
         <Form.Label>NO CAMPO ABAIXO, DESCREVA SUA IDEIA PARA MELHORAR O FUTURO DE SENHOR DO BONFIM.</Form.Label>
-        <Form.Control name="descricao" as="textarea" rows="3" />
+        <Form.Control
+          name="sugestao"
+          as="textarea"
+          rows="3"
+          onChange={(event) => {
+            setFormData({
+              ...formData,
+              sugestao: event.target.value,
+            });
+          }}
+        />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button
+        variant="primary"
+        type="button"
+        onClick={() => {
+          fetch('http://localhost/', {
+            method: 'post',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+            cache: 'default',
+            body: JSON.stringify(formData),
+          })
+          .then((response) => {
+            if (response.statusText === 'OK') {
+              if (formData.nome === undefined || formData.nome === '') {
+                setModalMessage(`
+                  Obrigado! Sua ideia foi enviada!
+                `);
+              } else {
+                setModalMessage(`
+                  Obrigado, ${formData.nome}! Sua ideia foi enviada!
+                `);
+              }
+              setShowModal(true);
+            }
+            return response.json();
+          })
+          .then((json) => console.log(json));
+        }}
+      >
         Enviar
       </Button>
     </Form>
+    <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Obrigado pela sua participação!</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{modalMessage}</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={() => setShowModal(false)}>
+          Fechar
+        </Button>
+      </Modal.Footer>
+    </Modal>
   </div>
   );
 });
