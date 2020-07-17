@@ -8,15 +8,53 @@ const SectionForm = React.forwardRef((props, ref) => {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [formData, setFormData] = useState({});
+  const [validated, setValidated] = useState(false);
   const firstFieldRef = useRef(null);
+
+  const saveData = (event) => {
+    const form = event.currentTarget;
+    event.preventDefault();
+    event.stopPropagation();
+    if (form.checkValidity()) {
+      fetch('http://localhost/', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+        cache: 'default',
+        body: JSON.stringify(formData),
+      })
+      .then((response) => {
+        if (response.statusText === 'OK') {
+          if (formData.nome === undefined || formData.nome === '') {
+            setModalMessage(`
+              Obrigado! Sua ideia foi enviada!
+            `);
+          } else {
+            setModalMessage(`
+              Obrigado, ${formData.nome}! Sua ideia foi enviada!
+            `);
+          }
+          setShowModal(true);
+        }
+        return response.json();
+      })
+      .then((json) => console.log(json));
+    }
+
+    setValidated(true);
+
+  };
 
   useImperativeHandle(ref, () => ({
     scrollToForm: () => {
-      window.scrollTo(0, firstFieldRef.current.offsetTop)
+      window.scrollTo(0, ref.current.offsetTop)
       firstFieldRef.current.focus();
       console.log(firstFieldRef.current);
     },
-  }), []);
+  }), [ref]);
 
   return (
     <div ref={ref} className="section-form">
@@ -26,46 +64,109 @@ const SectionForm = React.forwardRef((props, ref) => {
     <h2>
       QUESTIONÁRIO
     </h2>
-    <Form>
+    <Form noValidate validated={validated} onSubmit={saveData}>
       <Form.Group>
         <Form.Label>NOME</Form.Label>
         <Form.Control
           type="text"
           name="nome"
           ref={firstFieldRef}
-          onChange={(event) => {
-            setFormData({
-              ...formData,
-              nome: event.target.value
-            });
-          }}
+          onChange={(event) => setFormData({
+            ...formData,
+            nome: event.target.value
+          })}
         />
       </Form.Group>
       <Form.Group>
         <Form.Label>WHATSAPP</Form.Label>
-        <InputMask mask="(99) 99999-9999" name="whatsapp" className="form-control" />
+        <Form.Control
+          as={InputMask}
+          mask="(99) 99999-9999"
+          name="whatsapp"
+          className="form-control"
+          isInvalid={
+            formData.whatsapp !== undefined &&
+            formData.whatsapp !== '' &&
+            !/^(\(\d{2}\)\s)(\d{4,5}-\d{4})$/.test(formData.whatsapp)
+          }
+          onChange={(event) => setFormData({
+            ...formData,
+            whatsapp: event.target.value
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          Número de telefone inválido.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
         <Form.Label>E-MAIL</Form.Label>
-        <Form.Control type="email" name="email" placeholder="email@exemplo.com" />
+        <Form.Control
+          type="email"
+          name="email"
+          placeholder="email@exemplo.com"
+          isInvalid={
+            formData.email !== undefined &&
+            formData.email !== '' &&
+            !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
+          }
+          onChange={(event) => setFormData({
+            ...formData,
+            email: event.target.value
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          O e-mail não é válido.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
         <Form.Label>COMUNIDADE OU BAIRRO*</Form.Label>
-        <Form.Control type="text" name="bairro" />
+        <Form.Control
+          type="text"
+          name="bairro"
+          required
+          onChange={(event) => setFormData({
+            ...formData,
+            bairro: event.target.value
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          Preenchimento obrigatório.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
         <Form.Label>GRAU DE INSTRUÇÃO*</Form.Label>
-        <Form.Control name="instrucao" as="select" value="">
+        <Form.Control
+          name="instrucao"
+          as="select"
+          required
+          value={formData.instrucao || ''}
+          onChange={(event) => setFormData({
+            ...formData,
+            instrucao: event.target.value
+          })}
+        >
           <option value="" disabled>Selecione...</option>
           <option value="Ensino fundamental">Ensino fundamental</option>
           <option value="Ensino médio">Ensino médio</option>
           <option value="Ensino superior">Ensino superior</option>
           <option value="Pós-Graduação">Pós-Graduação</option>
         </Form.Control>
+        <Form.Control.Feedback type="invalid">
+          Preenchimento obrigatório.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
         <Form.Label>NA SUA OPNIÃO, QUAL O PRINCIPAL PROBLEMA DO MUNICÍPIO DE SENHOR DO BONFIM?*</Form.Label>
-        <Form.Control name="problema" as="select" value="">
+        <Form.Control
+          name="problema"
+          as="select"
+          required
+          value={formData.problema || ''}
+          onChange={(event) => setFormData({
+            ...formData,
+            problema: event.target.value
+          })}
+        >
           <option value="" disabled>Selecione...</option>
           <option value="Asfalto/Calçamento/Pavimentação de ruas">Asfalto/Calçamento/Pavimentação de ruas</option>
           <option value="Desemprego">Desemprego</option>
@@ -79,10 +180,22 @@ const SectionForm = React.forwardRef((props, ref) => {
           <option value="Saúde/Atendimento médico">Saúde/Atendimento médico</option>
           <option value="Violência/Falta de segurança">Violência/Falta de segurança</option>
         </Form.Control>
+        <Form.Control.Feedback type="invalid">
+          Preenchimento obrigatório.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
         <Form.Label>NA SUA OPNIÃO, DAS SEGUINTES ÁREAS, QUAL DEVE SER PRIORIZADA PELO PRÓXIMO PREFEITO?*</Form.Label>
-        <Form.Control name="prioridade" as="select" value="">
+        <Form.Control
+          name="prioridade"
+          as="select"
+          required
+          value={formData.prioridade || ''}
+          onChange={(event) => setFormData({
+            ...formData,
+            prioridade: event.target.value
+          })}
+        >
           <option value="" disabled>Selecione...</option>
           <option value="Saúde">Saúde</option>
           <option value="Educação">Educação</option>
@@ -92,10 +205,22 @@ const SectionForm = React.forwardRef((props, ref) => {
           <option value="Agricultura">Agricultura</option>
           <option value="Infraestrutura">Infraestrutura</option>
         </Form.Control>
+        <Form.Control.Feedback type="invalid">
+          Preenchimento obrigatório.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
         <Form.Label>NO CAMPO ABAIXO ESCOLHA UM EIXO EM QUAL SUA IDEIA SE ENCAIXA.*</Form.Label>
-        <Form.Control name="eixo" as="select" value="">
+        <Form.Control
+          name="eixo"
+          as="select"
+          value={formData.eixo || ''}
+          required
+          onChange={(event) => setFormData({
+            ...formData,
+            eixo: event.target.value
+          })}
+        >
           <option value="" disabled>Selecione...</option>
           <option value="Assistência Social">Assistência Social</option>
           <option value="Capacitação e Qualificação dos Servidores Públicos Municipais">ACapacitação e Qualificação dos Servidores Públicos Municipais</option>
@@ -134,6 +259,9 @@ const SectionForm = React.forwardRef((props, ref) => {
           <option value="Turismo">Turismo</option>
           <option value="Valorização dos Servidores Públicos Municipais">Valorização dos Servidores Públicos Municipais</option>
         </Form.Control>
+        <Form.Control.Feedback type="invalid">
+          Preenchimento obrigatório.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
         <Form.Label>NO CAMPO ABAIXO, DESCREVA SUA IDEIA PARA MELHORAR O FUTURO DE SENHOR DO BONFIM.</Form.Label>
@@ -141,46 +269,17 @@ const SectionForm = React.forwardRef((props, ref) => {
           name="sugestao"
           as="textarea"
           rows="3"
-          onChange={(event) => {
-            setFormData({
-              ...formData,
-              sugestao: event.target.value,
-            });
-          }}
+          required
+          onChange={(event) => setFormData({
+            ...formData,
+            sugestao: event.target.value,
+          })}
         />
+        <Form.Control.Feedback type="invalid">
+          Preenchimento obrigatório.
+        </Form.Control.Feedback>
       </Form.Group>
-      <Button
-        variant="primary"
-        type="button"
-        onClick={() => {
-          fetch('http://localhost/', {
-            method: 'post',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            mode: 'cors',
-            cache: 'default',
-            body: JSON.stringify(formData),
-          })
-          .then((response) => {
-            if (response.statusText === 'OK') {
-              if (formData.nome === undefined || formData.nome === '') {
-                setModalMessage(`
-                  Obrigado! Sua ideia foi enviada!
-                `);
-              } else {
-                setModalMessage(`
-                  Obrigado, ${formData.nome}! Sua ideia foi enviada!
-                `);
-              }
-              setShowModal(true);
-            }
-            return response.json();
-          })
-          .then((json) => console.log(json));
-        }}
-      >
+      <Button variant="primary" type="submit" >
         Enviar
       </Button>
     </Form>
