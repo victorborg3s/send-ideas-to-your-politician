@@ -12,15 +12,19 @@ const SectionForm = React.forwardRef((props, ref) => {
   const firstFieldRef = useRef(null);
 
   const onFormSubmit = (event) => {
-    const form = event.currentTarget;
+    const formEl = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
-    if (form.checkValidity()) {
-      fetch('http://laerciojunior.com/api', {
+    if (formEl.checkValidity()) {
+      const form = new FormData();
+      for (let field in formData) {
+        form.append(field, formData[field]);
+      }
+      fetch('api/', {
         method: 'post',
         mode: 'cors',
         cache: 'default',
-        body: new FormData(form),
+        body: form,
       })
       .then((response) => {
         if (response.statusText === 'OK') {
