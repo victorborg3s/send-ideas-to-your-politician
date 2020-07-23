@@ -1,17 +1,16 @@
 import React from 'react';
+import { Col, Row } from 'react-bootstrap';
 
-import sectionTwoImage from '../img/image-section-blue.png';
+import background from '../img/sec2-background.png';
 import './SectionTwo.css';
 
 function SectionTwo() {
   return (
-    <div className="section-two">
-      <img
-        alt={`O Programa de Governo Participativo é um projeto voltado a população para que juntos
-              possamos apontar, discutir e opinar sobre as políticas públicas para a nossa cidade.`}
-        src={sectionTwoImage}
-      />
-    </div>
+    <Row className="section-two">
+      <Col >
+        <img src={background} alt="" />
+      </Col>
+    </Row>
   );
 }
 

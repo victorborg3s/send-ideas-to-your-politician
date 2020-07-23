@@ -2,9 +2,7 @@ import React, { useRef } from 'react';
 import { Container } from 'react-bootstrap';
 
 import Header from './Header';
-import SectionPresentation from './SectionPresentation';
-import SectionTwo from './SectionTwo';
-import SectionThree from './SectionThree';
+import SectionOne from './SectionOne';
 import SectionForm from './SectionForm';
 import './App.css';
 
@@ -14,12 +12,10 @@ function App() {
   return (
     <Container className="app">
       <Header description={description} />
-      <SectionPresentation
+      <SectionOne
         onParticipateClick={() => formRef.current.scrollToForm()}
         description={description}
       />
-      <SectionTwo />
-      <SectionThree description={description} />
       <SectionForm ref={formRef} />
     </Container>
   );
