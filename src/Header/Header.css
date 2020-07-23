@@ -1,0 +1,54 @@
+div.header {
+  background-color: #f4f4f4;
+}
+
+div.header > div.col {
+  max-height: 100%;
+  text-align: center;
+}
+
+div.header div.logo {
+  padding: 1rem;
+}
+
+div.header div.logo-party {
+  display: block;
+  height: 100%;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+div.header div.logo img {
+  height: 40px;
+}
+
+div.header div.logo-party img {
+  margin-top: 5px;
+  height: 25px;
+  vertical-align: text-top;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  div.header div.logo img {
+    height: 60px;
+  }
+
+  div.header div.logo-party img {
+    height: 40px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+  div.header div.logo img {
+    height: 80px;
+  }
+
+  div.header div.logo-party img {
+    margin-top: 20px;
+    height: 40px;
+  }
+}

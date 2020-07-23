@@ -1,6 +1,6 @@
 import React from 'react';
 
-import sectionTwoImage from '../image-section-blue.png';
+import sectionTwoImage from '../img/image-section-blue.png';
 import './SectionTwo.css';
 
 function SectionTwo() {

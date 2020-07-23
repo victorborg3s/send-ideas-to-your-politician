@@ -1,6 +1,6 @@
 import React from 'react';
 
-import sectionThreeImg from '../image-section-green.png';
+import sectionThreeImg from '../img/image-section-green.png';
 import './SectionThree.css';
 
 function SectionThree({ description }) {

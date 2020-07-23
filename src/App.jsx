@@ -1,20 +1,19 @@
 import React, { useRef } from 'react';
+import { Container } from 'react-bootstrap';
 
+import Header from './Header';
 import SectionPresentation from './SectionPresentation';
 import SectionTwo from './SectionTwo';
 import SectionThree from './SectionThree';
 import SectionForm from './SectionForm';
-import headerImage from './header.png';
 import './App.css';
 
 function App() {
   const formRef = useRef(null);
   const description = "Laércio Jr: Pré-candidato a Prefeito";
   return (
-    <div className="app">
-      <header>
-        <img src={headerImage} alt={description} />
-      </header>
+    <Container className="app">
+      <Header description={description} />
       <SectionPresentation
         onParticipateClick={() => formRef.current.scrollToForm()}
         description={description}
@@ -22,7 +21,7 @@ function App() {
       <SectionTwo />
       <SectionThree description={description} />
       <SectionForm ref={formRef} />
-    </div>
+    </Container>
   );
 }
 

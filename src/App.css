@@ -1,13 +1,3 @@
-div.app header {
-  background-color: #0086c5;
-  text-align: center;
-  padding: 1rem 0.5rem 0.5rem 0.5rem;
-}
-
-div.app header img {
-  max-width: 100%;
-}
-
 div.app section {
   clear: both;
   float: left;

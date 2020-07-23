@@ -1,6 +1,6 @@
 import React from 'react';
 
-import politicianPhoto from '../politician-photo-cutted.png';
+import politicianPhoto from '../img/politician-photo-cutted.png';
 import './SectionPresentation.css';
 
 function SectionPresentation({ description, onParticipateClick }) {
