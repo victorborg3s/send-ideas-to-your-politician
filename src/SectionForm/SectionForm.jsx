@@ -147,9 +147,13 @@ const SectionForm = React.forwardRef((props, ref) => {
         >
           <option value="" disabled>Selecione...</option>
           <option value="Ensino fundamental">Ensino fundamental</option>
-          <option value="Ensino médio">Ensino médio</option>
-          <option value="Ensino superior">Ensino superior</option>
-          <option value="Pós-Graduação">Pós-Graduação</option>
+          <option value="Ensino Fundamental incompleto">Ensino Fundamental incompleto</option>
+          <option value="Ensino Médio">Ensino Médio</option>
+          <option value="Ensino Médio incompleto">Ensino Médio incompleto</option>
+          <option value="Ensino Superior">Ensino Superior</option>
+          <option value="Ensino Superior incompleto">Ensino Superior incompleto</option>
+          <option value="Pós-graduação">Pós-graduação</option>
+          <option value="Pós-graduação incompleta">Pós-graduação incompleta</option>
         </Form.Control>
         <Form.Control.Feedback type="invalid">
           Preenchimento obrigatório.
