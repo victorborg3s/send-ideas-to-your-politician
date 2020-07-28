@@ -31,6 +31,7 @@ div.section-one div.slogan strong {
 }
 
 div.section-one img.button {
+  cursor: pointer;
   margin-top: 0.125rem;
   width: 115px;
 }
