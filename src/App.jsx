@@ -6,6 +6,7 @@ import SectionOne from './SectionOne';
 import SectionTwo from './SectionTwo';
 import SectionThree from './SectionThree';
 import SectionForm from './SectionForm';
+import Footer from './Footer';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <SectionTwo />
       <SectionThree />
       <SectionForm ref={formRef} />
+      <Footer />
     </Container>
   );
 }
