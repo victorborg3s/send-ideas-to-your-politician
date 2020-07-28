@@ -3,6 +3,8 @@ import { Container } from 'react-bootstrap';
 
 import Header from './Header';
 import SectionOne from './SectionOne';
+import SectionTwo from './SectionTwo';
+import SectionThree from './SectionThree';
 import SectionForm from './SectionForm';
 import './App.css';
 
@@ -16,6 +18,8 @@ function App() {
         onParticipateClick={() => formRef.current.scrollToForm()}
         description={description}
       />
+      <SectionTwo />
+      <SectionThree />
       <SectionForm ref={formRef} />
     </Container>
   );

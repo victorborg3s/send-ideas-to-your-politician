@@ -3,9 +3,8 @@ div.section-three {
   background-color: #8dc757;
   overflow: hidden;
   padding-top: 5rem 0;
-  width: 100%;
 }
 
 div.section-three img {
-  max-width: 100%;
+  width: 100%;
 }
