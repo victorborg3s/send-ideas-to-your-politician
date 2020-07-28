@@ -66,7 +66,7 @@ const SectionForm = React.forwardRef((props, ref) => {
     </h2>
     <Form noValidate validated={validated} onSubmit={onFormSubmit}>
       <Form.Group>
-        <Form.Label>NOME</Form.Label>
+        <Form.Label>NOME:</Form.Label>
         <Form.Control
           type="text"
           name="nome"
@@ -78,7 +78,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label>WHATSAPP</Form.Label>
+        <Form.Label>WHATSAPP:</Form.Label>
         <Form.Control
           as={InputMask}
           mask="(99) 99999-9999"
@@ -99,7 +99,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
-        <Form.Label>E-MAIL</Form.Label>
+        <Form.Label>E-MAIL:</Form.Label>
         <Form.Control
           type="email"
           name="email"
@@ -119,7 +119,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
-        <Form.Label>COMUNIDADE OU BAIRRO*</Form.Label>
+        <Form.Label>COMUNIDADE OU BAIRRO:*</Form.Label>
         <Form.Control
           type="text"
           name="bairro"
@@ -134,7 +134,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
-        <Form.Label>GRAU DE INSTRUÇÃO*</Form.Label>
+        <Form.Label>GRAU DE INSTRUÇÃO:*</Form.Label>
         <Form.Control
           name="instrucao"
           as="select"
@@ -156,7 +156,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
-        <Form.Label>NA SUA OPNIÃO, QUAL O PRINCIPAL PROBLEMA DO MUNICÍPIO DE SENHOR DO BONFIM?*</Form.Label>
+        <Form.Label>NA SUA OPNIÃO, QUAL O PRINCIPAL PROBLEMA DO MUNICÍPIO DE SENHOR DO BONFIM:*</Form.Label>
         <Form.Control
           name="problema"
           as="select"
@@ -185,7 +185,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
-        <Form.Label>NA SUA OPNIÃO, DAS SEGUINTES ÁREAS, QUAL DEVE SER PRIORIZADA PELO PRÓXIMO PREFEITO?*</Form.Label>
+        <Form.Label>NA SUA OPNIÃO, DAS SEGUINTES ÁREAS, QUAL DEVE SER PRIORIZADA PELO PRÓXIMO PREFEITO:*</Form.Label>
         <Form.Control
           name="prioridade"
           as="select"
@@ -210,7 +210,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
-        <Form.Label>NO CAMPO ABAIXO ESCOLHA UM EIXO EM QUAL SUA IDEIA SE ENCAIXA.*</Form.Label>
+        <Form.Label>NO CAMPO ABAIXO ESCOLHA UM EIXO EM QUAL SUA IDEIA SE ENCAIXA:*</Form.Label>
         <Form.Control
           name="eixo"
           as="select"
@@ -264,7 +264,7 @@ const SectionForm = React.forwardRef((props, ref) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
-        <Form.Label>NO CAMPO ABAIXO, DESCREVA SUA IDEIA PARA MELHORAR O FUTURO DE SENHOR DO BONFIM*</Form.Label>
+        <Form.Label>NO CAMPO ABAIXO, DESCREVA SUA IDEIA PARA MELHORAR O FUTURO DE SENHOR DO BONFIM:*</Form.Label>
         <Form.Control
           name="sugestao"
           as="textarea"
